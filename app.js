@@ -8,14 +8,30 @@
  * https://developer.spotify.com/web-api/authorization-guide/#authorization_code_flow
  */
 
+// load environment variables
+require('dotenv').config();
+
+/** 
+ * Dependencies
+ */
 var express = require('express'); // Express web server framework
 var request = require('request'); // "Request" library
 var querystring = require('querystring');
 var cookieParser = require('cookie-parser');
 
-var client_id = 'b6ab1b85736547fba91e2cb8aa16ad2e'; // Your client id
-var client_secret = '9fb2e5df16fb4ce898e2df27ccc883df'; // Your secret
-var redirect_uri = 'http://localhost:3001/callback'; // Your redirect uri
+
+/** 
+ * Environment variables
+ */
+var client_id = process.env.CLIENT_ID; // Your client id
+var client_secret = process.env.CLIENT_SECRET; // Your secret
+var redirect_uri = process.env.REDIRECT_URI; // Your redirect uri
+
+
+/** 
+ * Global variables
+ */
+var stateKey = 'spotify_auth_state';
 
 /**
  * Generates a random string containing numbers and letters
@@ -32,8 +48,8 @@ var generateRandomString = function(length) {
   return text;
 };
 
-var stateKey = 'spotify_auth_state';
 
+// instantiate app
 var app = express();
 
 app.use(express.static(__dirname + '/public'))
