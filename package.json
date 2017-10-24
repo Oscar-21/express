@@ -1,0 +1,11 @@
+{
+  "name": "jm",
+  "version": "1.0.0",
+  "description": "node.js app using spotify api",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "oscar-21",
+  "license": "MIT"
+}
